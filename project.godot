@@ -11,6 +11,7 @@ config_version=4
 [application]
 
 config/name="logic-game"
+run/main_scene="res://calculator.tscn"
 config/icon="res://icon.png"
 
 [physics]
