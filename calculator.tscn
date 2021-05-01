@@ -8,10 +8,10 @@
 [node name="Calculator" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 0.755859
-margin_top = 0.891335
-margin_right = 0.755859
-margin_bottom = 0.891357
+margin_left = 40.8463
+margin_top = 130.295
+margin_right = 40.8463
+margin_bottom = 130.295
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -452,12 +452,20 @@ margin_top = 132.0
 margin_right = 41.0
 margin_bottom = 172.0
 rect_min_size = Vector2( 40, 40 )
-text = "( )"
+text = "( "
 
-[node name="Button11" type="Button" parent="HBoxContainer/VBoxContainer2/GridContainer"]
+[node name="Button12" type="Button" parent="HBoxContainer/VBoxContainer2/GridContainer"]
 margin_left = 45.0
 margin_top = 132.0
 margin_right = 85.0
+margin_bottom = 172.0
+rect_min_size = Vector2( 40, 40 )
+text = ")"
+
+[node name="Button11" type="Button" parent="HBoxContainer/VBoxContainer2/GridContainer"]
+margin_left = 89.0
+margin_top = 132.0
+margin_right = 131.0
 margin_bottom = 172.0
 rect_min_size = Vector2( 40, 40 )
 text = "Del"
