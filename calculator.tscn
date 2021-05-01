@@ -454,18 +454,10 @@ margin_bottom = 172.0
 rect_min_size = Vector2( 40, 40 )
 text = "( "
 
-[node name="Button12" type="Button" parent="HBoxContainer/VBoxContainer2/GridContainer"]
+[node name="Button11" type="Button" parent="HBoxContainer/VBoxContainer2/GridContainer"]
 margin_left = 45.0
 margin_top = 132.0
 margin_right = 85.0
 margin_bottom = 172.0
 rect_min_size = Vector2( 40, 40 )
 text = ")"
-
-[node name="Button11" type="Button" parent="HBoxContainer/VBoxContainer2/GridContainer"]
-margin_left = 89.0
-margin_top = 132.0
-margin_right = 131.0
-margin_bottom = 172.0
-rect_min_size = Vector2( 40, 40 )
-text = "Del"
