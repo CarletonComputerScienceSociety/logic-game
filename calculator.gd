@@ -1,6 +1,6 @@
 extends Control
 
-var symbol = ["A","B","C","/and","/or", "/not", "/xor", "/imp", "/dmp", "/par", "/del"]
+var symbol = ["A","B","C","a","o", "!", "x", "-->", "<->", "(", ")", "/del"]
 
 func _ready():
 	var button = $"HBoxContainer/VBoxContainer2/GridContainer".get_children()
