@@ -2,8 +2,44 @@
 
 [ext_resource path="res://Cell.tscn" type="PackedScene" id=1]
 [ext_resource path="res://calculator.gd" type="Script" id=2]
-[ext_resource path="res://Button.gd" type="Script" id=3]
-[ext_resource path="res://textBox.gd" type="Script" id=4]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends TextEdit
+
+
+# Declare member variables here. Examples:
+# var a = 2
+# var b = \"text\"
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+#func _process(delta):
+#	pass
+"
+
+[sub_resource type="GDScript" id=2]
+script/source = "extends Button
+
+
+# Declare member variables here. Examples:
+# var a = 2
+# var b = \"text\"
+
+
+# Called when the node enters the scene tree for the first time.
+func _pressed():
+	pass
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+#func _process(delta):
+#	pass
+"
 
 [node name="Calculator" type="Control"]
 anchor_right = 1.0
@@ -53,7 +89,7 @@ margin_left = 1.74008
 margin_top = 18.3263
 margin_right = 296.74
 margin_bottom = 81.3263
-script = ExtResource( 4 )
+script = SubResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -384,7 +420,7 @@ margin_right = 41.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 40, 40 )
 text = "A"
-script = ExtResource( 3 )
+script = SubResource( 2 )
 
 [node name="Button2" type="Button" parent="HBoxContainer/VBoxContainer2/GridContainer"]
 margin_left = 45.0
@@ -461,3 +497,11 @@ margin_right = 85.0
 margin_bottom = 172.0
 rect_min_size = Vector2( 40, 40 )
 text = ")"
+
+[node name="Button12" type="Button" parent="HBoxContainer/VBoxContainer2/GridContainer"]
+margin_left = 89.0
+margin_top = 132.0
+margin_right = 131.0
+margin_bottom = 172.0
+rect_min_size = Vector2( 40, 40 )
+text = "upd"
