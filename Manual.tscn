@@ -3,10 +3,10 @@
 [ext_resource path="res://manual pics/implication.png" type="Texture" id=1]
 [ext_resource path="res://manual pics/conjunction.png" type="Texture" id=2]
 [ext_resource path="res://manual pics/exclusive_or.png" type="Texture" id=3]
-[ext_resource path="res://manual pics/biconditional.png" type="Texture" id=4]
+[ext_resource path="res://manual pics/bi-conditional.png" type="Texture" id=4]
 [ext_resource path="res://manual pics/NEGATION (1).png" type="Texture" id=5]
 [ext_resource path="res://manual pics/inclusive_or.png" type="Texture" id=6]
-[ext_resource path="res://background2.jpeg" type="Texture" id=7]
+[ext_resource path="res://manual pics/Manual (3).png" type="Texture" id=7]
 
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 3 )
@@ -35,18 +35,22 @@ region_rect = Rect2( 0, 0, 1080, 1080 )
 [node name="Manual" type="Node2D"]
 
 [node name="TextureRect" type="TextureRect" parent="."]
-margin_right = 1600.0
-margin_bottom = 900.0
+margin_left = -1.02115
+margin_top = -11.0271
+margin_right = 1598.98
+margin_bottom = 888.973
 texture = ExtResource( 7 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="GridContainer" type="GridContainer" parent="."]
-margin_left = 82.3717
-margin_top = 114.91
-margin_right = 1678.37
-margin_bottom = 1012.91
+margin_left = 90.2224
+margin_top = 90.416
+margin_right = 1686.22
+margin_bottom = 988.416
+custom_constants/vseparation = 13
+custom_constants/hseparation = 15
 columns = 2
 __meta__ = {
 "_edit_use_anchors_": false
@@ -59,37 +63,37 @@ rect_min_size = Vector2( 100, 100 )
 custom_styles/panel = SubResource( 1 )
 
 [node name="Panel3" type="Panel" parent="GridContainer"]
-margin_left = 104.0
-margin_right = 204.0
+margin_left = 115.0
+margin_right = 215.0
 margin_bottom = 100.0
 rect_min_size = Vector2( 100, 100 )
 custom_styles/panel = SubResource( 2 )
 
 [node name="Panel4" type="Panel" parent="GridContainer"]
-margin_top = 104.0
+margin_top = 113.0
 margin_right = 100.0
-margin_bottom = 204.0
+margin_bottom = 213.0
 rect_min_size = Vector2( 100, 100 )
 custom_styles/panel = SubResource( 3 )
 
 [node name="Panel5" type="Panel" parent="GridContainer"]
-margin_left = 104.0
-margin_top = 104.0
-margin_right = 204.0
-margin_bottom = 204.0
+margin_left = 115.0
+margin_top = 113.0
+margin_right = 215.0
+margin_bottom = 213.0
 rect_min_size = Vector2( 100, 100 )
 custom_styles/panel = SubResource( 4 )
 
 [node name="Panel6" type="Panel" parent="GridContainer"]
-margin_top = 208.0
+margin_top = 226.0
 margin_right = 100.0
-margin_bottom = 308.0
+margin_bottom = 326.0
 rect_min_size = Vector2( 100, 100 )
 custom_styles/panel = SubResource( 5 )
 
 [node name="Panel" type="Panel" parent="GridContainer"]
-margin_left = 104.0
-margin_top = 208.0
-margin_right = 204.0
-margin_bottom = 308.0
+margin_left = 115.0
+margin_top = 226.0
+margin_right = 215.0
+margin_bottom = 326.0
 custom_styles/panel = SubResource( 6 )
