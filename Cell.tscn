@@ -21,7 +21,7 @@ __meta__ = {
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 margin_right = 40.0
 margin_bottom = 40.0
-text = "test"
+text = "A"
 __meta__ = {
 "_edit_use_anchors_": false
 }
