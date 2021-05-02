@@ -54,7 +54,7 @@ func _ready():
 	print(data)
 
 func _on_Button_pressed(i):
-	print(symbol[i])
+	#print(symbol[i])
 	textBox.insert_text_at_cursor(symbol[i])
 
 func _on_updated():
@@ -68,8 +68,8 @@ func _equ_to_array():
 	equ_array = []
 	for i in len(equation):
 		var y = equation.substr(i,1)
-		print(y)
-		print(y.to_upper() == y)
+		#print(y)
+		#print(y.to_upper() == y)
 		if y.to_upper() == y:
 			if(y == symbol[0]):
 				equ_array.append(A.duplicate(true))
@@ -78,18 +78,21 @@ func _equ_to_array():
 		else:
 			equ_array.append(y)
 	#print("hi")
-	print(equ_array)
+	#print(equ_array)
 
 
 func _parse_and_control():
 	data = [A, B]
 	header = [symbol[0], symbol[1]]
 	
-	var tree = _buildTree()
+	var tree = _buildTree(equ_array.duplicate(true))[0]
 	
+	
+	print(_calcTree(tree))
+	print(data)
+	print(data[len(data)-1])
 
-func _buildTree():
-	var equ = equ_array.duplicate(true)
+func _buildTree(equ):
 
 	for i in range(len(equ)):
 		equ[i] = treeNodeOb.new(equ[i])
@@ -97,16 +100,19 @@ func _buildTree():
 	var flag = true
 	var i = len(equ)-1
 	while flag:
-		print(equ)
+		#print(equ)
 		if typeof(equ[i].value)  == TYPE_STRING && equ[i].rightNode == null:
 			if equ[i].value != symbol[5]: #not !
 				equ[i].leftNode = equ[i-1]
+				equ[i-1].parentNode = equ[i]
 				equ[i].rightNode = equ[i+1]
+				equ[i+1].parentNode = equ[i]
 				equ.remove(i-1)
 				equ.remove(i)
 				i = i+-1
 			else:
 				equ[i].rightNode = equ[i+1]
+				equ[i+1].parentNode = equ[i]
 				equ.remove(i+1)
 		elif typeof(equ[i].value)  == TYPE_STRING:
 			i = i-1
@@ -117,8 +123,65 @@ func _buildTree():
 
 		if equ.size() == 1:
 			return equ
-	
 
+func _calcTree(root):
+	print("Top of treecalc")
+	print(root.value)
+	print(root.leftNode)
+	print(root.rightNode)
+	if(typeof(root.rightNode.value) == TYPE_ARRAY && root.value == symbol[5]):
+		root.value = notOp(root.rightNode.value)
+		print("after not function")
+		print(root.value)
+		data.append(root.value)
+		root.rightNode.free()
+		root.rightNode = null
+	elif(typeof(root.rightNode.value) == TYPE_ARRAY && typeof(root.leftNode.value) == TYPE_ARRAY):
+		if root.value == symbol[3]: #and
+			root.value = andOp(root.leftNode.value, root.rightNode.value)
+			#print(root.value)
+			data.append(root.value)
+			root.rightNode.free()
+			root.leftNode.free()
+			root.rightNode = null
+			root.leftNode = null
+		elif root.value == symbol[4]: #or
+			root.value = orOp(root.leftNode.value, root.rightNode.value)
+			data.append(root.value)
+			root.rightNode.free()
+			root.leftNode.free()
+			root.rightNode = null
+			root.leftNode = null
+		elif root.value == symbol[6]: #xor
+			root.value = xorOp(root.leftNode.value, root.rightNode.value)
+			data.append(root.value)
+			root.rightNode.free()
+			root.leftNode.free()
+			root.rightNode = null
+			root.leftNode = null
+		elif root.value == symbol[7]: #imp
+			root.value = impOp(root.leftNode.value, root.rightNode.value)
+			data.append(root.value)
+			root.rightNode.free()
+			root.leftNode.free()
+			root.rightNode = null
+			root.leftNode = null
+		elif root.value == symbol[8]: #dimp
+			root.value = dmpOp(root.leftNode.value, root.rightNode.value)
+			data.append(root.value)
+			root.rightNode.free()
+			root.leftNode.free()
+			root.rightNode = null
+			root.leftNode = null
+	else:
+		if root.rightNode == null && root.leftNode == null:
+			print("exit condition")
+			print(root.value)
+			return(root)
+		if typeof(root.rightNode.value) != TYPE_ARRAY:
+			return _calcTree(root.rightNode)
+		if typeof(root.leftNode.value) != TYPE_ARRAY:
+			return _calcTree(root.leftNode)
 
 
 var x = []
@@ -137,10 +200,10 @@ func orOp(list_1, list_2):
 
 func notOp(list_1):
 	x = []
-	print(list_1)
+	#print(list_1)
 	for i in range(len(list_1)):
 		x.append(!list_1[i])
-	print(x)
+	#print(x)
 	return x
 
 func impOp(list_1, list_2):
