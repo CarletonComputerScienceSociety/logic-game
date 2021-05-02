@@ -17,16 +17,18 @@ var data = []
 var equation = "" #stores what is currently in the text box
 var equ_array = []
 var textBox
+var rows = 4
+var cols = 8
+var grid = []
 
 
 func _ready():
 	var button = $"HBoxContainer/VBoxContainer2/GridContainer".get_children()
-	var grid = $"HBoxContainer/VBoxContainer/GridContainer2".get_children()
+	grid = $"HBoxContainer/VBoxContainer/GridContainer2".get_children()
 	
 	var andlist = functions.andOp(A,B)
 	var headers = [A, B, andlist]
-	var rows = 4
-	var cols = 8
+	
 
 	for i in len(headers):
 		for j in range(rows):
@@ -63,6 +65,16 @@ func _on_updated():
 	_equ_to_array()
 	#_parse()
 	_parse_and_control()
+	
+	for i in len(data):
+		for j in range(rows):
+			var text = ""
+			if data[i][j]:
+				text =  "1"
+			else:
+				text = "0"
+			grid[j*cols + i].get_node("VBox/HBox/RichTextLabel").text = text
+		
 
 func _equ_to_array():
 	equ_array = []
@@ -129,7 +141,10 @@ func _calcTree(root):
 	print(root.value)
 	print(root.leftNode)
 	print(root.rightNode)
-	if(typeof(root.rightNode.value) == TYPE_ARRAY && root.value == symbol[5]):
+	print(typeof(root.rightNode.value))
+	print(root.value == symbol[5])
+	if(typeof(root.rightNode.value) == TYPE_ARRAY && root.value == symbol[5]): #not detection
+		print("detected NOT")
 		root.value = notOp(root.rightNode.value)
 		print("after not function")
 		print(root.value)
@@ -137,51 +152,46 @@ func _calcTree(root):
 		root.rightNode.free()
 		root.rightNode = null
 	elif(typeof(root.rightNode.value) == TYPE_ARRAY && typeof(root.leftNode.value) == TYPE_ARRAY):
+		print("detected OPPERAND")
 		if root.value == symbol[3]: #and
+			print("detected AND")
 			root.value = andOp(root.leftNode.value, root.rightNode.value)
 			#print(root.value)
-			data.append(root.value)
-			root.rightNode.free()
-			root.leftNode.free()
-			root.rightNode = null
-			root.leftNode = null
+
 		elif root.value == symbol[4]: #or
+			print("detected OR")
 			root.value = orOp(root.leftNode.value, root.rightNode.value)
-			data.append(root.value)
-			root.rightNode.free()
-			root.leftNode.free()
-			root.rightNode = null
-			root.leftNode = null
+
 		elif root.value == symbol[6]: #xor
+			print("detected XOR")
 			root.value = xorOp(root.leftNode.value, root.rightNode.value)
-			data.append(root.value)
-			root.rightNode.free()
-			root.leftNode.free()
-			root.rightNode = null
-			root.leftNode = null
+
 		elif root.value == symbol[7]: #imp
+			print("detected IMP")
 			root.value = impOp(root.leftNode.value, root.rightNode.value)
-			data.append(root.value)
-			root.rightNode.free()
-			root.leftNode.free()
-			root.rightNode = null
-			root.leftNode = null
+
 		elif root.value == symbol[8]: #dimp
+			print("detected DIMP")
 			root.value = dmpOp(root.leftNode.value, root.rightNode.value)
-			data.append(root.value)
-			root.rightNode.free()
-			root.leftNode.free()
-			root.rightNode = null
-			root.leftNode = null
+		data.append(root.value)
+		root.rightNode.free()
+		root.leftNode.free()
+		root.rightNode = null
+		root.leftNode = null
 	else:
-		if root.rightNode == null && root.leftNode == null:
-			print("exit condition")
-			print(root.value)
-			return(root)
+		print("into Else")
 		if typeof(root.rightNode.value) != TYPE_ARRAY:
+			print("fix right")
 			return _calcTree(root.rightNode)
 		if typeof(root.leftNode.value) != TYPE_ARRAY:
+			print("fix left")
 			return _calcTree(root.leftNode)
+	
+	if root.rightNode == null && root.leftNode == null:
+		print("exit condition")
+		print(root.value)
+		return(root)
+	
 
 
 var x = []
