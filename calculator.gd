@@ -1,4 +1,6 @@
 extends Control
+onready var functions = get_node("/root/Functions")
+
 var symbol = ["A","B","C","a","o", "!", "x", "-->", "<->", "(", ")"]
 var A = [false, false, true, true]
 var B = [false, true, false, true]
@@ -11,18 +13,14 @@ var data = []
 #var C = [false, true, false, true, false, true, false, true]
 
 var equation = "" #stores what is currently in the text box
-var equArray = []
+var equ_array = []
 var textBox
-onready var functions = get_node("/root/Functions")
 
-var symbols = ["A","B","C","/and","/or", "/not", "/xor", "/imp", "/dmp", "/par", "/del"]
 
 func _ready():
 	var button = $"HBoxContainer/VBoxContainer2/GridContainer".get_children()
 	var grid = $"HBoxContainer/VBoxContainer/GridContainer2".get_children()
 	
-	var B = [true, false, true, false]
-	var A = [true, true, false, false]
 	var andlist = functions.andOp(A,B)
 	var headers = [A, B, andlist]
 	var rows = 4
@@ -42,9 +40,9 @@ func _ready():
 #
 	
 	
-	for i in range(len(button)):
+	for i in range(len(button)-1):
 		button[i].connect("pressed", self, "_on_Button_pressed", [i])
-	button[len(button)-1].connect("pressed", self, "_on_update")
+	button[len(button)-1].connect("pressed", self, "_on_updated")
 	
 	textBox = get_node("HBoxContainer/VBoxContainer/HBoxContainer/ColorRect/textBox")
 	#textBox.connect("text_changed", self, "_updated")
@@ -63,38 +61,35 @@ func _on_updated():
 	_parse_and_control()
 
 func _equ_to_array():
-	var e = []
+	equ_array = []
 	for i in len(equation):
 		var y = equation.substr(i,1)
 		if y.to_upper() == y:
 			if(y == "A"):
-				e.append(A)
+				equ_array.append(A)
 			elif( y == "B"):
-				e.append(B)
+				equ_array.append(B)
 		else:
-			e.append(y)
-	#print(x)
-	equArray = e
+			equ_array.append(y)
+	print("hi")
+	print(equ_array)
 
-#func _parse():
-#	var equ = equArray
-#
-#
-#
-#
-#	pass
 
 func _parse_and_control():
-	var equ = equArray
-	var notFind = equ.find("!")
+	data = [A, B]
+	header = ["A", "B"]
+	
+	var notFind = equ_array.find("!")
+	
+	# A, a, B, a, C
 	#var andFind = equ.find("a")
 	print(notFind)
 	#print(andFind)
 
-	if notFind > -1 && notFind < len(equ)-1: #not
-		equ.remove(notFind)
-		equ[notFind] = notOp(equ[notFind])
-		data.append(equ[notFind])
+	if notFind > -1 && notFind < len(equ_array)-1: #not
+		equ_array.remove(notFind)
+		equ_array[notFind] = notOp(equ_array[notFind])
+		data.append(equ_array[notFind])
 		print(data[len(data)-1])
 
 #	if andFind > -1 && andFind < len(equ)-1: #and
