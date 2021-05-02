@@ -2,7 +2,6 @@ extends Node
 
 var x = []
 
-
 func andOp(list_1, list_2):	
 	
 	x = []
