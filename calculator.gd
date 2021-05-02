@@ -33,7 +33,7 @@ func _ready():
 				text =  "1"
 			else:
 				text = "0"
-			grid[j*cols + i].get_node("RichTextLabel").text = text
+			grid[j*cols + i].get_node("VBox/HBox/RichTextLabel").text = text
 		
 #	for i in len(grid):
 #		grid[i].get_node("RichTextLabel").text = str(i)

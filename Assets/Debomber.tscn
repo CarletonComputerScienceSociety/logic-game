@@ -1,0 +1,317 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Cell.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Assets/Debomber.gd" type="Script" id=2]
+
+[node name="Debomber" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -1.12244
+margin_top = 1.12247
+margin_right = -1.12244
+margin_bottom = 1.12244
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LeftSide" type="VBoxContainer" parent="HBoxContainer"]
+margin_right = 400.0
+margin_bottom = 600.0
+
+[node name="Panel" type="Panel" parent="HBoxContainer/LeftSide"]
+margin_right = 400.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 400, 100 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/LeftSide/Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/LeftSide/Panel/VBoxContainer"]
+margin_top = 30.0
+margin_right = 400.0
+margin_bottom = 70.0
+alignment = 1
+
+[node name="GridContainer" type="GridContainer" parent="HBoxContainer/LeftSide/Panel/VBoxContainer/HBoxContainer"]
+margin_left = 70.0
+margin_right = 330.0
+margin_bottom = 40.0
+columns = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Cell" parent="HBoxContainer/LeftSide/Panel/VBoxContainer/HBoxContainer/GridContainer" instance=ExtResource( 1 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="Cell2" parent="HBoxContainer/LeftSide/Panel/VBoxContainer/HBoxContainer/GridContainer" instance=ExtResource( 1 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 44.0
+margin_right = 84.0
+margin_bottom = 40.0
+
+[node name="Cell3" parent="HBoxContainer/LeftSide/Panel/VBoxContainer/HBoxContainer/GridContainer" instance=ExtResource( 1 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 88.0
+margin_right = 128.0
+margin_bottom = 40.0
+
+[node name="Cell4" parent="HBoxContainer/LeftSide/Panel/VBoxContainer/HBoxContainer/GridContainer" instance=ExtResource( 1 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 132.0
+margin_right = 172.0
+margin_bottom = 40.0
+
+[node name="Cell5" parent="HBoxContainer/LeftSide/Panel/VBoxContainer/HBoxContainer/GridContainer" instance=ExtResource( 1 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 176.0
+margin_right = 216.0
+margin_bottom = 40.0
+
+[node name="Cell6" parent="HBoxContainer/LeftSide/Panel/VBoxContainer/HBoxContainer/GridContainer" instance=ExtResource( 1 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 220.0
+margin_right = 260.0
+margin_bottom = 40.0
+
+[node name="Panel2" type="Panel" parent="HBoxContainer/LeftSide"]
+margin_top = 104.0
+margin_right = 400.0
+margin_bottom = 204.0
+rect_min_size = Vector2( 400, 100 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/LeftSide/Panel2"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/LeftSide/Panel2/VBoxContainer"]
+margin_top = 30.0
+margin_right = 400.0
+margin_bottom = 70.0
+alignment = 1
+
+[node name="GridContainer" type="GridContainer" parent="HBoxContainer/LeftSide/Panel2/VBoxContainer/HBoxContainer"]
+margin_left = 70.0
+margin_right = 330.0
+margin_bottom = 40.0
+columns = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Cell" parent="HBoxContainer/LeftSide/Panel2/VBoxContainer/HBoxContainer/GridContainer" instance=ExtResource( 1 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="Cell2" parent="HBoxContainer/LeftSide/Panel2/VBoxContainer/HBoxContainer/GridContainer" instance=ExtResource( 1 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 44.0
+margin_right = 84.0
+margin_bottom = 40.0
+
+[node name="Cell3" parent="HBoxContainer/LeftSide/Panel2/VBoxContainer/HBoxContainer/GridContainer" instance=ExtResource( 1 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 88.0
+margin_right = 128.0
+margin_bottom = 40.0
+
+[node name="Cell4" parent="HBoxContainer/LeftSide/Panel2/VBoxContainer/HBoxContainer/GridContainer" instance=ExtResource( 1 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 132.0
+margin_right = 172.0
+margin_bottom = 40.0
+
+[node name="Cell5" parent="HBoxContainer/LeftSide/Panel2/VBoxContainer/HBoxContainer/GridContainer" instance=ExtResource( 1 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 176.0
+margin_right = 216.0
+margin_bottom = 40.0
+
+[node name="Cell6" parent="HBoxContainer/LeftSide/Panel2/VBoxContainer/HBoxContainer/GridContainer" instance=ExtResource( 1 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 220.0
+margin_right = 260.0
+margin_bottom = 40.0
+
+[node name="RightSide" type="VBoxContainer" parent="HBoxContainer"]
+margin_left = 404.0
+margin_right = 704.0
+margin_bottom = 600.0
+
+[node name="TruthTable" type="Panel" parent="HBoxContainer/RightSide"]
+margin_right = 300.0
+margin_bottom = 500.0
+rect_min_size = Vector2( 300, 500 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/RightSide/TruthTable"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel" type="RichTextLabel" parent="HBoxContainer/RightSide/TruthTable/VBoxContainer"]
+margin_right = 300.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 0, 40 )
+text = "truth table
+"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/RightSide/TruthTable/VBoxContainer"]
+margin_top = 44.0
+margin_right = 300.0
+margin_bottom = 260.0
+alignment = 1
+
+[node name="GridContainer" type="GridContainer" parent="HBoxContainer/RightSide/TruthTable/VBoxContainer/HBoxContainer"]
+margin_left = 86.0
+margin_right = 214.0
+margin_bottom = 216.0
+columns = 3
+
+[node name="Cell" parent="HBoxContainer/RightSide/TruthTable/VBoxContainer/HBoxContainer/GridContainer" instance=ExtResource( 1 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="Cell2" parent="HBoxContainer/RightSide/TruthTable/VBoxContainer/HBoxContainer/GridContainer" instance=ExtResource( 1 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 44.0
+margin_right = 84.0
+margin_bottom = 40.0
+
+[node name="Cell3" parent="HBoxContainer/RightSide/TruthTable/VBoxContainer/HBoxContainer/GridContainer" instance=ExtResource( 1 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 88.0
+margin_right = 128.0
+margin_bottom = 40.0
+
+[node name="Cell4" parent="HBoxContainer/RightSide/TruthTable/VBoxContainer/HBoxContainer/GridContainer" instance=ExtResource( 1 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 44.0
+margin_right = 40.0
+margin_bottom = 84.0
+
+[node name="Cell5" parent="HBoxContainer/RightSide/TruthTable/VBoxContainer/HBoxContainer/GridContainer" instance=ExtResource( 1 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 44.0
+margin_top = 44.0
+margin_right = 84.0
+margin_bottom = 84.0
+
+[node name="Cell6" parent="HBoxContainer/RightSide/TruthTable/VBoxContainer/HBoxContainer/GridContainer" instance=ExtResource( 1 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 88.0
+margin_top = 44.0
+margin_right = 128.0
+margin_bottom = 84.0
+
+[node name="Cell7" parent="HBoxContainer/RightSide/TruthTable/VBoxContainer/HBoxContainer/GridContainer" instance=ExtResource( 1 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 88.0
+margin_right = 40.0
+margin_bottom = 128.0
+
+[node name="Cell8" parent="HBoxContainer/RightSide/TruthTable/VBoxContainer/HBoxContainer/GridContainer" instance=ExtResource( 1 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 44.0
+margin_top = 88.0
+margin_right = 84.0
+margin_bottom = 128.0
+
+[node name="Cell9" parent="HBoxContainer/RightSide/TruthTable/VBoxContainer/HBoxContainer/GridContainer" instance=ExtResource( 1 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 88.0
+margin_top = 88.0
+margin_right = 128.0
+margin_bottom = 128.0
+
+[node name="Cell10" parent="HBoxContainer/RightSide/TruthTable/VBoxContainer/HBoxContainer/GridContainer" instance=ExtResource( 1 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 132.0
+margin_right = 40.0
+margin_bottom = 172.0
+
+[node name="Cell11" parent="HBoxContainer/RightSide/TruthTable/VBoxContainer/HBoxContainer/GridContainer" instance=ExtResource( 1 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 44.0
+margin_top = 132.0
+margin_right = 84.0
+margin_bottom = 172.0
+
+[node name="Cell12" parent="HBoxContainer/RightSide/TruthTable/VBoxContainer/HBoxContainer/GridContainer" instance=ExtResource( 1 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 88.0
+margin_top = 132.0
+margin_right = 128.0
+margin_bottom = 172.0
+
+[node name="Cell13" parent="HBoxContainer/RightSide/TruthTable/VBoxContainer/HBoxContainer/GridContainer" instance=ExtResource( 1 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 176.0
+margin_right = 40.0
+margin_bottom = 216.0
+
+[node name="Cell14" parent="HBoxContainer/RightSide/TruthTable/VBoxContainer/HBoxContainer/GridContainer" instance=ExtResource( 1 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 44.0
+margin_top = 176.0
+margin_right = 84.0
+margin_bottom = 216.0
+
+[node name="Cell15" parent="HBoxContainer/RightSide/TruthTable/VBoxContainer/HBoxContainer/GridContainer" instance=ExtResource( 1 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 88.0
+margin_top = 176.0
+margin_right = 128.0
+margin_bottom = 216.0
