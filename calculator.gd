@@ -78,7 +78,7 @@ func _equ_to_array():
 		else:
 			equ_array.append(y)
 	#print("hi")
-	#print(equ_array)
+	print(equ_array)
 
 
 func _parse_and_control():
@@ -95,24 +95,25 @@ func _buildTree():
 		equ[i] = treeNodeOb.new(equ[i])
 
 	var flag = true
-	var i = 0
+	var i = len(equ)-1
 	while flag:
+		print(equ)
 		if typeof(equ[i].value)  == TYPE_STRING && equ[i].rightNode == null:
 			if equ[i].value != symbol[5]: #not !
 				equ[i].leftNode = equ[i-1]
 				equ[i].rightNode = equ[i+1]
 				equ.remove(i-1)
 				equ.remove(i)
-				i = i-1
+				i = i+-1
 			else:
 				equ[i].rightNode = equ[i+1]
 				equ.remove(i+1)
 		elif typeof(equ[i].value)  == TYPE_STRING:
-			i = i+1
+			i = i-1
 		elif typeof(equ[i].value) == TYPE_OBJECT:
-			i = i+1
+			i = i-1
 		elif typeof(equ[i].value) == TYPE_ARRAY:
-			i = i+1
+			i = i-1
 
 		if equ.size() == 1:
 			return equ
