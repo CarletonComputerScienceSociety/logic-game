@@ -1,7 +1,9 @@
 extends Control
 onready var functions = get_node("/root/Functions")
 
-var symbol = ["A","B","C","a","o", "!", "x", "-->", "<->", "(", ")"]
+const treeNodeOb = preload("res://treeClass.gd")
+
+var symbol = ["A","B","C","a","o", "n", "x", ">", "d", "(", ")"]
 var A = [false, false, true, true]
 var B = [false, true, false, true]
 
@@ -25,7 +27,7 @@ func _ready():
 	var headers = [A, B, andlist]
 	var rows = 4
 	var cols = 8
-	
+
 	for i in len(headers):
 		for j in range(rows):
 			var text = ""
@@ -52,10 +54,12 @@ func _ready():
 	print(data)
 
 func _on_Button_pressed(i):
+	print(symbol[i])
 	textBox.insert_text_at_cursor(symbol[i])
 
 func _on_updated():
 	equation = textBox.get_line(0)
+	print(textBox.get_line(0))
 	_equ_to_array()
 	#_parse()
 	_parse_and_control()
@@ -64,41 +68,57 @@ func _equ_to_array():
 	equ_array = []
 	for i in len(equation):
 		var y = equation.substr(i,1)
+		print(y)
+		print(y.to_upper() == y)
 		if y.to_upper() == y:
-			if(y == "A"):
-				equ_array.append(A)
-			elif( y == "B"):
-				equ_array.append(B)
+			if(y == symbol[0]):
+				equ_array.append(A.duplicate(true))
+			elif( y == symbol[1]):
+				equ_array.append(B.duplicate(true))
 		else:
 			equ_array.append(y)
-	print("hi")
-	print(equ_array)
+	#print("hi")
+	#print(equ_array)
 
 
 func _parse_and_control():
 	data = [A, B]
-	header = ["A", "B"]
+	header = [symbol[0], symbol[1]]
 	
-	var notFind = equ_array.find("!")
+	var tree = _buildTree()
 	
-	# A, a, B, a, C
-	#var andFind = equ.find("a")
-	print(notFind)
-	#print(andFind)
 
-	if notFind > -1 && notFind < len(equ_array)-1: #not
-		equ_array.remove(notFind)
-		equ_array[notFind] = notOp(equ_array[notFind])
-		data.append(equ_array[notFind])
-		print(data[len(data)-1])
+func _buildTree():
+	var equ = equ_array.duplicate(true)
 
-#	if andFind > -1 && andFind < len(equ)-1: #and
-#		equ.remove(notFind)
-#		if equ[notFind] == "A":
-#			data.append(andOp(data[0]))
-#		elif equ[notFind] == "B":
-#			data.append(notOp(data[1]))
-#		print(data[len(data)-1])
+	for i in range(len(equ)):
+		equ[i] = treeNodeOb.new(equ[i])
+
+	var flag = true
+	var i = 0
+	while flag:
+		if typeof(equ[i].value)  == TYPE_STRING && equ[i].rightNode == null:
+			if equ[i].value != symbol[5]: #not !
+				equ[i].leftNode = equ[i-1]
+				equ[i].rightNode = equ[i+1]
+				equ.remove(i-1)
+				equ.remove(i)
+				i = i-1
+			else:
+				equ[i].rightNode = equ[i+1]
+				equ.remove(i+1)
+		elif typeof(equ[i].value)  == TYPE_STRING:
+			i = i+1
+		elif typeof(equ[i].value) == TYPE_OBJECT:
+			i = i+1
+		elif typeof(equ[i].value) == TYPE_ARRAY:
+			i = i+1
+
+		if equ.size() == 1:
+			return equ
+	
+
+
 
 var x = []
 
